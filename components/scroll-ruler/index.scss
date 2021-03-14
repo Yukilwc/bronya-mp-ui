@@ -1,0 +1,74 @@
+$containerHeight: 200rpx;
+.scroll-ruler-container {
+    background-color: #fff;
+    margin: auto;
+    position: relative;
+    .scroll-ruler-wrapper {
+        position: relative;
+        .anchor-value-area {
+            text-align: center;
+            font-size: 16px;
+            color:red;
+        }
+        .anchor-area {
+            width: 100%;
+            height: 50px;
+            position: relative;
+            .anchor {
+                width: 16px;
+                position: absolute;
+                bottom: 10px;
+                transform: translateX(-50%);
+                -webkit-transform: translateX(-50%);
+                -ms-transform: translateX(-50%);
+                -moz-transform: translateX(-50%);
+                -o-transform: translateX(-50%);
+                border-radius: 0 100% 0 0;
+                .image {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                }
+            }
+        }
+        .scroll-view {
+            width: 100%;
+            margin: auto;
+            height: $containerHeight;
+            .ruler-wrapper {
+                height: $containerHeight;
+                position: relative;
+                .ruler-scale-list {
+                    position: relative;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    flex-wrap: nowrap;
+                    .line {
+                        width: 1px;
+                        height: 30px;
+                        background-color: #000;
+                        position: relative;
+                        &:nth-last-child(1) {
+                            margin-right: 0px !important;
+                        }
+                        &.line--long {
+                            height: 50px;
+                        }
+                        .line-num {
+                            font-size: 12px;
+                            position: absolute;
+                            bottom: -1.5em;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            -webkit-transform: translateX(-50%);
+                            -ms-transform: translateX(-50%);
+                            -moz-transform: translateX(-50%);
+                            -o-transform: translateX(-50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

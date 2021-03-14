@@ -1,0 +1,26 @@
+<view class='scroll-ruler-container' style="width: {{ruler.viewWidthPixel+'px'}}">
+    <view class='scroll-ruler-wrapper'>
+        <view class='anchor-value-area'>{{anchorValue}}</view>
+        <!-- 固定游标 -->
+        <view class='anchor-area'>
+            <view class='anchor' style="left: {{ruler.viewWidthPixel/2+'px'}}">
+            <image mode='widthFix' class='image' src='/images/arrow.png'></image>
+            </view>
+        </view>
+        <!-- 滚动区域 -->
+        <scroll-view class='scroll-view' bounces='{{false}}' scroll-x='{{true}}' scroll-left="{{scrollLeft}}" scroll-with-animation="{{true}}" enhanced='{{true}}' show-scrollbar='{{false}}' binddragstart='dragStart' binddragging='dragging' binddragend='dragEnd' bindscroll="scroll">
+            <!-- 完整长度的刻度尺 -->
+            <view class='ruler-wrapper' style="width: {{(ruler.totalWidthPixel+ruler.viewWidthPixel)+'px'}}">
+                <view class='ruler-scale-list' style="width: {{ruler.totalWidthPixel+'px'}};margin: auto">
+                    <block wx:for='{{ruler.count}}' wx:key='index'>
+                        <view class="line {{index%ruler.long==0?'line--long':''}}" style="margin-right: {{ruler.spanPixel+'px'}}">
+                            <view wx:if='{{index%ruler.long==0}}' class='line-num'>
+                                {{ruler.unit*index}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+</view>
