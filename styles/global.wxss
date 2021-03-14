@@ -1,6 +1,9 @@
 .m-a {
     margin: auto;
 }
+.t-a-c {
+    text-align: center;
+}
 view,
 scroll-view,
 swiper,

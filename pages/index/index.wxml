@@ -1,2 +1,11 @@
 <!-- index.wxml -->
-<view class="container m-a">hello world</view>
+<view class="container">
+  <view class='title m-a t-a-c'>
+    <button bindtap='switchPop'>弹出层组件</button>
+  </view>
+</view>
+<x-popup show="{{showPop}}" maskClosable='{{true}}'>
+  <view class='' slot='content'>
+    <view class='content-wrapper'>内容</view>
+  </view>
+</x-popup>
