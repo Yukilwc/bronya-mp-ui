@@ -4,7 +4,7 @@
         <!-- 固定游标 -->
         <view class='anchor-area'>
             <view class='anchor' style="left: {{ruler.viewWidthPixel/2+'px'}}">
-            <image mode='widthFix' class='image' src='/images/arrow.png'></image>
+                <!-- <image mode='widthFix' class='image' src='/images/arrow.png'></image> -->
             </view>
         </view>
         <!-- 滚动区域 -->

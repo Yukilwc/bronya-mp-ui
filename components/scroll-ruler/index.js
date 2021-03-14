@@ -59,7 +59,7 @@ Component({
     lifetimes: {
         created() {
             // 此时不可调用setData
-            // console.log('lifetimes created')
+            console.log('scroll ruler 组件 lifetimes creatd 触发')
         },
         attached() {
             // 大多数工作在此进行
@@ -149,7 +149,7 @@ Component({
                 anchorValue: start + spanCount * unit
             })
             // 此处抛出事件给上层组件
-            this.triggerEvent('scrollfinalvalue',this.data.anchorValue)
+            this.triggerEvent('scrollfinalvalue', this.data.anchorValue)
         }, 300)
     }
 

@@ -1,4 +1,4 @@
 .content-wrapper {
-  height: 300rpx;
+  min-height: 300rpx;
   background-color: #fff;
 }

@@ -27,7 +27,8 @@ Component({
     },
     observers: {
         'show'(n) {
-            // console.log('observes', n, this.data.show)
+            // 组件初始化时，也会触发show组件的监听
+            console.log('触发show字段监听', n, this.data.show)
             if (n) {
                 this.doShow()
             }

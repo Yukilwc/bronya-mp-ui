@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "x-popup": "/components/x-popup/index"
+    "x-popup": "/components/x-popup/index",
+    "scroll-ruler": "/components/scroll-ruler/index"
   }
 }

@@ -7,5 +7,6 @@
 <x-popup show="{{showPop}}" maskClosable='{{true}}'>
   <view class='' slot='content'>
     <view class='content-wrapper'>内容</view>
+    <scroll-ruler></scroll-ruler>
   </view>
 </x-popup>
