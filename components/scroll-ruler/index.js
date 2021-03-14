@@ -29,7 +29,7 @@ Component({
     data: {
         // display: false,
         // _isAnimating: [], // 当前正在执行的动画
-        scrollLeft: 0,
+        scrollLeft: 100,
         anchorValue: 0, // 刻度值
         ruler: {
             totalWidthPixel: 0, // 总长度px 计算
