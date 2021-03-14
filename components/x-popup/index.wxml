@@ -1,8 +1,6 @@
-<view class='popupContainer' wx:if='{{inited}}'>
-    <view class='mask' bindtap='clickMask' style="{{display?'':'display:none'}}"></view>
-    <view class='wrapper' style="{{display?'':'display:none'}}">
-        <view class='content'>
-            <slot name='content'></slot>
-        </view>
+<view class='popupContainer' wx:if='{{containerRender}}'>
+    <view class="overlay {{show?'overlay--show':'overlay--hidden'}}" bindtap='triggerOverlayTap'></view>
+    <view class="wrapper {{show?'content--show':'content--hidden'}}">
+        <slot name='content'></slot>
     </view>
 </view>

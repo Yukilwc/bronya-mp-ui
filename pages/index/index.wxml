@@ -4,7 +4,7 @@
     <button bindtap='switchPop'>弹出层组件</button>
   </view>
 </view>
-<x-popup show="{{showPop}}" maskClosable='{{true}}'>
+<x-popup show="{{showPop}}" bindoverlaytap='overlayTap'>
   <view class='' slot='content'>
     <view class='content-wrapper'>内容</view>
     <scroll-ruler></scroll-ruler>

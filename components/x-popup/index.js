@@ -1,4 +1,5 @@
 const app = getApp()
+import { throttle } from '../../utils/tool'
 Component({
     behaviors: [],
     externalClasses: [],
@@ -7,28 +8,37 @@ Component({
         pureDataPattern: /^_/
     },
     properties: {
+        // 显示,仅由上层组件控制
         show: {
             type: Boolean,
             value: false,
         },
-        maskClosable: {
-            type: Boolean,
-            value: false
-        },
+        // 仅当使用animate api时有效  该功能暂时未实现
         duration: {
             type: Number,
             value: 300,
+        },
+        // 是否使用微信的动画api，会比css+settimeout更精确? 该功能暂时未实现
+        // 微信api的动画，与css动画不同，初始css状态需要进行合理控制否则会出现严重闪烁
+        // 而常规css，初始形态，在第一次渲染时，载入，和animate 的css状态混合，不会出现闪烁
+        // 究其原因，还是js操纵动画，与css样式的时间差问题，css总是最优先渲染的
+        useWxAnimate: {
+            type: Boolean,
+            value: false
+
         }
+
     },
     data: {
-        display: false,
-        inited: false,
-        _isAnimating: [], // 当前正在执行的动画
+        // 唯一的显示状态，由父组件传入，父组件维护，不再维护两套
+        // 防止出现，父子层级的显示控制变量不一致的问题
+        // 由此，蒙层点击事件，也禁止直接操作组件内状态，而是转为抛出一个点击事件
+        containerRender: false
     },
     observers: {
         'show'(n) {
             // 组件初始化时，也会触发show组件的监听
-            console.log('触发show字段监听', n, this.data.show)
+            // console.log('触发show字段监听', n, this.data.show)
             if (n) {
                 this.doShow()
             }
@@ -75,150 +85,25 @@ Component({
 
     },
     methods: {
-        clickMask() {
-            // console.log('this.props', this.data.maskClosable)
-            if (!this.data.maskClosable) {
-                return
-            }
-            if (!this.data.display) {
-                return
-            }
-            this.doHide()
+        triggerOverlayTap() {
+            this.triggerEvent('overlaytap')
         },
-        // 以动画的形式，显示
-        doShow() {
-            // console.log('doShow', this.data.duration, this.data.display, this.data._isAnimating)
-            // if (this.data.display) {
-            //     return
-            // }
-            this.setData({
-                inited: true,
-                display: true,
-            })
-            wx.nextTick(() => {
-                // console.log('show nexttick start')
-                this.showAnimate()
-            })
-            // console.log('doShow after setData', this.data.duration, this.data.display)
-            // this.showAnimate()
-
-        },
-        showAnimate() {
-            console.log('start show ainmate')
-            const _this = this
-            // 动画
-            this.animate('.popupContainer .mask', [
-                {
-                    opacity: 0,
-                    // ease: 'ease-in'
-                },
-                {
-                    opacity: 0.4,
-                    // ease: 'ease-in'
-                }
-            ], this.data.duration, () => {
-                // console.log('mask animate has finish')
-                // _this.clearAnimation('.popupContainer .mask')
-            })
-            this.animate('.popupContainer .wrapper', [
-                {
-                    translate3d: ['0', '100%', '0'],
-                    ease: 'ease'
-                },
-                {
-                    translate3d: ['0', '0', '0'],
-                    ease: 'ease'
-                }
-            ], this.data.duration, () => {
-                // console.log('wrapper animate has finish')
-                // _this.clearAnimation('.popupContainer .wrapper', { opacity: false })
-            })
-            // console.log('animate after')
-
-        },
-        // 以动画的形式，隐藏
-        doHide() {
-
-            // console.log('doHide', this.data._isAnimating)
-            if (!this.data.display) {
-                return
-            }
-
-            // console.log('order 1')
-            this.hideAnimate()
-            // this.hideAnimate2()
-            // console.log('order 2')
-            // this.setData({
-            //     display: false,
-            // })
-            // console.log('order 3')
-
-
-
-        },
-        hideAnimate() {
-            const _this = this
-            console.log('_this.data._isAnimating', _this.data._isAnimating)
-            if (_this.data._isAnimating.length > 0) {
-                // console.log('is animating')
-                return
-            }
-            // this.setData({
-            //     _isAnimating: true
-            // })
-            this.data._isAnimating = []
-            // 动画
-            _this.data._isAnimating.push(1)
-            this.animate('.popupContainer .mask', [
-                {
-                    opacity: 0.4,
-                    // ease: 'ease-in'
-                },
-                {
-                    opacity: 0,
-                    // ease: 'ease-in'
-                }
-            ], this.data.duration, () => {
-                _this.data._isAnimating.pop()
-                _this.closeAll()
-                // _this.clearAnimation('.popupContainer .mask')
-                // console.log('animate hide has finish')
-                // console.log('order 5')
-            })
-            _this.data._isAnimating.push(1)
-            this.animate('.popupContainer .wrapper', [
-                {
-                    translate3d: ['0', '0', '0'],
-                    ease: 'ease-out'
-                },
-                {
-                    translate3d: ['0', '100%', '0'],
-                    ease: 'ease-out'
-                }
-            ], this.data.duration, () => {
-                // console.log('wrapper animate has finish')
-                _this.data._isAnimating.pop()
-                _this.closeAll()
-                // _this.clearAnimation('.popupContainer .wrapper')
-            })
-
-
-            // console.log('order 6')
-        },
-        closeAll() {
-            console.log('start close all', this.data._isAnimating)
-            if (this.data._isAnimating.length === 0) {
+        doHide: throttle(function () {
+            if (!this.data.containerRender) return
+            setTimeout(() => {
+                // 动画结束后，再彻底销毁
                 this.setData({
-                    display: false
+                    containerRender: false
                 })
-                this.data._isAnimating = []
-            }
-            else {
 
-            }
-        }
-
-
+            }, 300);
+        }, 300),
+        doShow: throttle(function () {
+            if (this.data.containerRender) return
+            this.setData({
+                containerRender: true
+            })
+        }, 300)
     }
 
 })
