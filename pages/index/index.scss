@@ -1,0 +1,17 @@
+.container {
+    font-size: 10px;
+}
+
+.content-wrapper {
+    min-height: 300rpx;
+    background-color: #fff;
+}
+.container {
+    .title {
+        &.m-a {
+            &.t-a-c {
+                font-size: 50rpx;
+            }
+        }
+    }
+}

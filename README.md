@@ -1,2 +1,3 @@
 # wechat-minapp-library
-微信小程序收藏合集
+
+自用的小程序UI组件库
