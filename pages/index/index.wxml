@@ -1,6 +1,4 @@
 <!-- index.wxml -->
 <view class="container">
-  <view class='title m-a t-a-c'>
-    <button bindtap='switchPop'>弹出层组件</button>
-  </view>
+  <view class='' bindtap="navTo" data-path="/pages/dialog/index">弹出层组件</view>
 </view>

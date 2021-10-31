@@ -1,1 +1,2 @@
-<text>pages/exclusiveCustomer/index.wxml</text>
+<view class='' bindtap="showTap">中间弹出层</view>
+<ByaDialog wx:if="showDialog" bindclosed="closeTap"></ByaDialog>

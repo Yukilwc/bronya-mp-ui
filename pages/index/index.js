@@ -17,6 +17,19 @@ Page({
       showPop: false
     })
 
+  },
+  navTo(e) {
+    let path = e.currentTarget.dataset.path
+    console.log('==========path', path)
+    wx.navigateTo({
+      url: path,
+      events: {},
+      success: () => {
+      },
+      fail: (res) => {
+        console.error('naverror', res)
+      },
+    })
   }
 
 })

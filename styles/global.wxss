@@ -43,3 +43,7 @@ web-view,
 ad {
     box-sizing: border-box;
 }
+
+page {
+    --theme: #51c8fa;
+}

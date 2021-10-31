@@ -1,0 +1,23 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "弹层组件",
+          "pathName": "pages/dialog/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
