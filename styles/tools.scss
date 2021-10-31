@@ -1,0 +1,8 @@
+.container {
+    // text-align: left;
+}
+@mixin ellipsis() {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

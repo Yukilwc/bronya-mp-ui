@@ -1,5 +1,8 @@
+@import "../../styles/tools.scss";
+
 .container {
-    font-size: 10px;
+    // font-size: 10px;
+    @include ellipsis();
 }
 
 .content-wrapper {

@@ -1,5 +1,7 @@
 .container {
-  font-size: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .content-wrapper {
