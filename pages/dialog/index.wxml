@@ -1,2 +1,2 @@
 <view class='' bindtap="showTap">中间弹出层</view>
-<ByaDialog wx:if="showDialog" bindclosed="closeTap"></ByaDialog>
+<bya-dialog wx:if="showDialog" bindclosed="closeTap"></bya-dialog>
