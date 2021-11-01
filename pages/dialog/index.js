@@ -14,7 +14,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showDialog: false
+    showDialog: false,
+    showOl: false
   },
 
   /**
@@ -38,6 +39,18 @@ Page({
   showTap() {
     this.setData({
       showDialog: true
+    })
+  },
+  showOlTap() {
+    console.log('==========',)
+    this.setData({
+      showOl: true
+    })
+
+  },
+  closeOl() {
+    this.setData({
+      showOl: false
     })
   }
 

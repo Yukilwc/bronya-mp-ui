@@ -1,1 +1,33 @@
-  
+.overlay-container {
+    @keyframes maskShowAni {
+        0% {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        100% {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+    }
+    @keyframes maskHideAni {
+        0% {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        100% {
+            background-color: rgba(0, 0, 0, 0);
+        }
+    }
+
+    .overlay-content {
+        position: fixed;
+        z-index: 2000;
+        top: 0rpx;
+        bottom: 0rpx;
+        left: 0rpx;
+        right: 0rpx;
+        &.show-ani {
+            animation: maskShowAni forwards;
+        }
+        &.hide-ani {
+            animation: maskHideAni forwards;
+        }
+    }
+}

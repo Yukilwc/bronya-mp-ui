@@ -1,1 +1,3 @@
-蒙层
+<view bindtap="overlayTap" class="overlay-container" hidden="{{!render}}">
+    <view style="animation-duration:{{dur}}ms;animation-timing-function:{{timing}}" bindanimationend="aniEnd" class="overlay-content  {{visible?'show-ani':'hide-ani'}}"></view>
+</view>

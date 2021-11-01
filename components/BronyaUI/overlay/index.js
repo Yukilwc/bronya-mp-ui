@@ -24,21 +24,31 @@ Component({
         show: {
             type: Boolean,
             value: false
+        },
+        dur: {
+            type: Number,
+            value: 350
+        },
+        timing: {
+            type: String,
+            value: 'ease'
         }
     },
     data: {
-        $_locale: ''
+        render: false,
+        visible: false
     },
     observers: {
-        // 'show'(n) {
-        //     // console.log('observes', n, this.data.show)
-        //     if (n) {
-        //         this.doShow()
-        //     }
-        //     else {
-        //         this.doHide()
-        //     }
-        // }
+        // 可以起到初始化和后续监听的功能
+        'show'(n) {
+            console.log('observes', n)
+            if (n) {
+                this.doShow()
+            }
+            else {
+                this.doHide()
+            }
+        }
     },
     lifetimes: {
         created() {
@@ -46,10 +56,12 @@ Component({
             console.log('权限组件构建 created')
         },
         attached() {
-            // this.setData({
-            //     $_locale: wx.$i18n.getLocale()
-            // })
-
+            // if (this.data.show) {
+            //     this.doShow()
+            // }
+            // else {
+            //     this.doHide()
+            // }
         },
         moved() {
             // console.log('lifetimes moved')
@@ -82,6 +94,30 @@ Component({
 
     },
     methods: {
+        doShow() {
+            this.triggerEvent('show')
+            this.setData({
+                render: true,
+                visible: true
+            })
+        },
+        doHide() {
+            this.triggerEvent('close')
+            this.setData({
+                visible: false
+            })
+        },
+        aniEnd() {
+            console.log('==========ani end', this.data.visible)
+            if (!this.data.visible) {
+                this.setData({
+                    render: false
+                })
+            }
+        },
+        overlayTap() {
+            this.triggerEvent('overlaytap')
+        }
     }
 
 })
