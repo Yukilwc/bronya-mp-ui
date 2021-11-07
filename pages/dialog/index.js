@@ -14,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showDialog: false,
+    showDialog: true,
     showOl: false
   },
 
@@ -32,8 +32,9 @@ Page({
 
   },
   closeTap() {
+    console.log('==========closed事件,一般用来彻底销毁弹窗等',)
     this.setData({
-      showDialog: false
+      // showDialog: false
     })
   },
   showTap() {

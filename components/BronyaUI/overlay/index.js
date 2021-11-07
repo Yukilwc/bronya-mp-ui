@@ -124,7 +124,8 @@ Component({
                 wx.setNavigationBarColor({
                     ...this.data.nav.overlay,
                     animation: {
-                        duration: this.dur,
+                        duration: this.data.dur,
+                        // duration: 3000,
                         timingFunc: 'linear'
                     },
                     success: (result) => {
@@ -139,7 +140,7 @@ Component({
                 wx.setNavigationBarColor({
                     ...this.data.nav.noOverlay,
                     animation: {
-                        duration: this.dur,
+                        duration: this.data.dur,
                         timingFunc: 'linear'
                     },
                     success: (result) => {

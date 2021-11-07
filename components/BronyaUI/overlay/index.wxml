@@ -1,3 +1,4 @@
-<view bindtap="overlayTap" class="overlay-container" hidden="{{!render}}">
+<!-- <view bindtap="overlayTap" class="bya-overlay-container" hidden="{{!render}}"> -->
+<view bindtap="overlayTap" class="bya-overlay-container" wx:if="{{render}}">
     <view style="z-index:{{zIndex}};animation-duration:{{dur}}ms;animation-timing-function:{{timing}}" bindanimationend="aniEnd" class="overlay-content  {{visible?'show-ani':'hide-ani'}}"></view>
 </view>

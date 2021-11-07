@@ -1,1 +1,55 @@
-  
+.bya-layout-container {
+    @keyframes showAni {
+        0% {
+            opacity: 0;
+            transform: translate(-50%) scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: translate(-50%) scale(1);
+        }
+    }
+    @keyframes hideAni {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+    .opacity-overlay {
+    }
+    .bya-dialog {
+        position: fixed;
+        transform: translate(-50%);
+        top: 50%;
+        left: 50%;
+        &.show-ani {
+            animation: showAni forwards;
+        }
+        &.hide-ani {
+            animation: hideAni forwards;
+        }
+
+        .bya-dialog__wrapper {
+            .bya-dialog__header {
+                .bya-dialog__header-title {
+                }
+                .bya-dialog__header-close {
+                }
+            }
+            .bya-dialog__content {
+            }
+            .bya-dialog__footer {
+                .btn-group {
+                    .left {
+                    }
+                    .right {
+                    }
+                }
+            }
+        }
+    }
+}
+
+@import "./skin/skin-1.scss";

@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText": "弹层组件",
   "navigationBarTextStyle": "white",
-  "usingComponents": {
-    "bya-dialog": "/components/BronyaUI/dialog",
-    "bya-overlay": "/components/BronyaUI/overlay"
-  }
+  "usingComponents": {}
 }

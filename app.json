@@ -9,6 +9,10 @@
     "navigationBarTitleText": "BronyaUI",
     "navigationBarTextStyle": "black"
   },
+  "usingComponents": {
+    "bya-dialog": "/components/BronyaUI/dialog",
+    "bya-overlay": "/components/BronyaUI/overlay"
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
 }

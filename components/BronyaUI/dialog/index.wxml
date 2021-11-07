@@ -1,2 +1,21 @@
-<!-- <bya-overlay show="{{show}}"></bya-overlay> -->
-弹窗
+<view bindtap="overlayTap" class="bya-layout-container" wx:if="{{render}}">
+    <view class='opacity-overlay'></view>
+    <bya-overlay show="{{visible}}" dur="{{dur}}" bindoverlaytap="overlayTap"></bya-overlay>
+    <view style="top:calc(50% + {{yOffset}});z-index:{{zIndex}};animation-duration:{{dur}}ms;animation-timing-function:{{timing}}" bindanimationend="aniEnd" class="bya-dialog  {{visible?'show-ani':'hide-ani'}}">
+        <view class='bya-dialog__wrapper'>
+            <view class='bya-dialog__header'>
+                <view class='bya-dialog__header-title'></view>
+                <view class='bya-dialog__header-close'></view>
+            </view>
+            <view class='bya-dialog__content'>
+                <slot></slot>
+            </view>
+            <view class='bya-dialog__footer'>
+                <view class='btn-group'>
+                    <view class='left'></view>
+                    <view class='right'></view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

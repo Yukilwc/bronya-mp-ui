@@ -1,0 +1,38 @@
+@keyframes showAni {
+  0% {
+    opacity: 0;
+    transform: translate(-50%) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%) scale(1);
+  }
+}
+
+@keyframes hideAni {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.bya-layout-container .bya-dialog {
+  position: fixed;
+  transform: translate(-50%);
+  top: 50%;
+  left: 50%;
+}
+
+.bya-layout-container .bya-dialog.show-ani {
+  animation: showAni forwards;
+}
+
+.bya-layout-container .bya-dialog.hide-ani {
+  animation: hideAni forwards;
+}
+
+.bya-dialog-container--skin-1 {
+  color: red;
+}

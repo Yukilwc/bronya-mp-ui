@@ -45,5 +45,5 @@ ad {
 }
 
 page {
-    --theme: #806d9e;
+    /* --theme: #806d9e; */
 }

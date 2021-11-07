@@ -16,7 +16,7 @@
   }
 }
 
-.overlay-container .overlay-content {
+.bya-overlay-container .overlay-content {
   position: fixed;
   top: 0rpx;
   bottom: 0rpx;
@@ -24,10 +24,10 @@
   right: 0rpx;
 }
 
-.overlay-container .overlay-content.show-ani {
+.bya-overlay-container .overlay-content.show-ani {
   animation: maskShowAni forwards;
 }
 
-.overlay-container .overlay-content.hide-ani {
+.bya-overlay-container .overlay-content.hide-ani {
   animation: maskHideAni forwards;
 }
