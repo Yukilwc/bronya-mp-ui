@@ -1,4 +1,4 @@
-<view class="bya-layout-container" wx:if="{{render}}">
+<view class="bya-layout-container bya-layout-container--{{skin}}" wx:if="{{render}}">
     <!-- 透明蒙层防止动画未结束时误触 -->
     <view class='opacity-overlay' wx:if="{{disabled}}" style="z-index:{{zIndex+1}};"></view>
     <bya-overlay show="{{visible}}" dur="{{dur}}" bindoverlaytap="overlayTap"></bya-overlay>

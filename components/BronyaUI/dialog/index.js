@@ -66,6 +66,11 @@ Component({
         overlay: {
             type: Boolean,
             value: true
+        },
+        // 皮肤
+        skin: {
+            type: String,
+            value: ""
         }
     },
     data: {

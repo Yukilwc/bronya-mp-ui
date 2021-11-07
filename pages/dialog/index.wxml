@@ -4,10 +4,17 @@
     <!-- <bya-overlay wx:if="{{showOverlay}}" bindclosed="closeOl"></bya-overlay> -->
     <bya-overlay show="{{showOl}}" navChange="{{true}}" bindoverlaytap="closeOl"></bya-overlay>
     <view class='' bindtap="showTap">中间弹出层no skin</view>
-    <bya-dialog dur="{{3000}}" show="{{showDialog}}" bindclosed="closeTap">
-        <view class='' style="background-color: #fff; padding: 30rpx;">
+    <view class='' bindtap="showSkin1DialogTap">中间弹出层skin-1</view>
+    <bya-dialog dur="{{350}}" show="{{showDialog}}">
+        <view class='' style="background-color: #fff;">
             <view class=''>no skin弹层内容</view>
             <view class='' style="margin-top: 30rpx;" bindtap="closeTap">点击关闭</view>
+        </view>
+    </bya-dialog>
+    <bya-dialog skin="skin-1" dur="{{350}}" show="{{showSkin1Dialog}}">
+        <view class=''>
+            <view class=''>skin-1弹层内容</view>
+            <view class='' style="margin-top: 30rpx;" bindtap="closeSkin1DialogTap">点击关闭</view>
         </view>
     </bya-dialog>
 </page-meta>

@@ -1,3 +1,22 @@
-.bya-dialog-container--skin-1 {
-    color: red;
+.bya-layout-container.bya-dialog-container--skin-1 {
+    .bya-dialog {
+        .bya-dialog__wrapper {
+            .bya-dialog__header {
+                .bya-dialog__header-title {
+                }
+                .bya-dialog__header-close {
+                }
+            }
+            .bya-dialog__content {
+            }
+            .bya-dialog__footer {
+                .btn-group {
+                    .left {
+                    }
+                    .right {
+                    }
+                }
+            }
+        }
+    }
 }

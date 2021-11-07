@@ -14,8 +14,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    showDialog: true,
-    showOl: false
+    showDialog: false,
+    showOl: false,
+    showSkin1Dialog: true,
   },
 
   /**
@@ -42,6 +43,18 @@ Page({
       showDialog: true
     })
   },
+  closeSkin1DialogTap() {
+    console.log('==========关闭点击trigger',)
+    this.setData({
+      showSkin1Dialog: false
+    })
+  },
+  showSkin1DialogTap() {
+    this.setData({
+      showSkin1Dialog: true
+    })
+  },
+
   showOlTap() {
     console.log('==========',)
     this.setData({
