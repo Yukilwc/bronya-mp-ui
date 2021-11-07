@@ -35,7 +35,7 @@ Component({
         },
         zIndex: {
             type: String,
-            value: '2000'
+            value: '3000'
 
         },
         // 是否联动导航栏一起切换
@@ -70,7 +70,8 @@ Component({
     },
     data: {
         render: false,
-        visible: false
+        visible: false,
+        disabled: false
     },
     observers: {
         'show'(n) {
@@ -129,20 +130,24 @@ Component({
             this.triggerEvent('show')
             this.setData({
                 render: true,
-                visible: true
+                visible: true,
+                disabled: false
+
             })
         },
         doHide() {
             this.triggerEvent('close')
             this.setData({
-                visible: false
+                visible: false,
+                disabled: true
             })
         },
         aniEnd() {
             console.log('==========ani end', this.data.visible)
             if (!this.data.visible) {
                 this.setData({
-                    render: false
+                    render: false,
+                    disabled: false
                 })
                 this.triggerEvent('closed')
             }

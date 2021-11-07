@@ -18,6 +18,12 @@
         }
     }
     .opacity-overlay {
+        position: fixed;
+        top: 0rpx;
+        left: 0rpx;
+        right: 0rpx;
+        bottom: 0rpx;
+        opacity: 0;
     }
     .bya-dialog {
         position: fixed;

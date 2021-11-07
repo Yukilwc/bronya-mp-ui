@@ -5,6 +5,9 @@
     <bya-overlay show="{{showOl}}" navChange="{{true}}" bindoverlaytap="closeOl"></bya-overlay>
     <view class='' bindtap="showTap">中间弹出层no skin</view>
     <bya-dialog dur="{{3000}}" show="{{showDialog}}" bindclosed="closeTap">
-        <view class='' style="background-color: #fff; padding: 30rpx;">no skin弹层内容</view>
+        <view class='' style="background-color: #fff; padding: 30rpx;">
+            <view class=''>no skin弹层内容</view>
+            <view class='' style="margin-top: 30rpx;" bindtap="closeTap">点击关闭</view>
+        </view>
     </bya-dialog>
 </page-meta>

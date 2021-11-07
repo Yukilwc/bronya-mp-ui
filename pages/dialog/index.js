@@ -32,9 +32,9 @@ Page({
 
   },
   closeTap() {
-    console.log('==========closed事件,一般用来彻底销毁弹窗等',)
+    console.log('==========关闭点击trigger',)
     this.setData({
-      // showDialog: false
+      showDialog: false
     })
   },
   showTap() {

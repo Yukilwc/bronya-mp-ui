@@ -18,6 +18,15 @@
   }
 }
 
+.bya-layout-container .opacity-overlay {
+  position: fixed;
+  top: 0rpx;
+  left: 0rpx;
+  right: 0rpx;
+  bottom: 0rpx;
+  opacity: 0;
+}
+
 .bya-layout-container .bya-dialog {
   position: fixed;
   transform: translate(-50%);
