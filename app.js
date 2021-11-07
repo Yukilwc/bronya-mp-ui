@@ -34,6 +34,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    color: {
+      // 槿紫作为主题色 http://zhongguose.com/#jinzi
+      themeColor: '#806d9e'
+    }
   }
 })

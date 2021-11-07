@@ -32,6 +32,30 @@ Component({
         timing: {
             type: String,
             value: 'ease'
+        },
+        zIndex: {
+            type: String,
+            value: '2000'
+
+        },
+        // 是否联动导航栏一起切换
+        navChange: {
+            type: Boolean,
+            value: true,
+        },
+        nav: {
+            type: Object,
+            value: {
+                overlay: {
+                    frontColor: '#ffffff',
+                    backgroundColor: '#332c3f',
+
+                },
+                noOverlay: {
+                    frontColor: '#ffffff',
+                    backgroundColor: '#806d9e',
+                }
+            }
         }
     },
     data: {
@@ -94,8 +118,42 @@ Component({
 
     },
     methods: {
+        changeNavColor(val) {
+            if (!this.data.navChange) return
+            if (val) {
+                wx.setNavigationBarColor({
+                    ...this.data.nav.overlay,
+                    animation: {
+                        duration: this.dur,
+                        timingFunc: 'linear'
+                    },
+                    success: (result) => {
+
+                    },
+                    fail: () => { },
+                    complete: () => { }
+                });
+
+            }
+            else {
+                wx.setNavigationBarColor({
+                    ...this.data.nav.noOverlay,
+                    animation: {
+                        duration: this.dur,
+                        timingFunc: 'linear'
+                    },
+                    success: (result) => {
+
+                    },
+                    fail: () => { },
+                    complete: () => { }
+                });
+
+            }
+        },
         doShow() {
             this.triggerEvent('show')
+            this.changeNavColor(true)
             this.setData({
                 render: true,
                 visible: true
@@ -103,6 +161,7 @@ Component({
         },
         doHide() {
             this.triggerEvent('close')
+            this.changeNavColor(false)
             this.setData({
                 visible: false
             })
@@ -113,6 +172,7 @@ Component({
                 this.setData({
                     render: false
                 })
+                this.triggerEvent('closed')
             }
         },
         overlayTap() {

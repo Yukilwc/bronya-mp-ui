@@ -18,7 +18,6 @@
 
 .overlay-container .overlay-content {
   position: fixed;
-  z-index: 2000;
   top: 0rpx;
   bottom: 0rpx;
   left: 0rpx;

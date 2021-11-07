@@ -1,5 +1,6 @@
 <view class='' bindtap="showOlTap">mask蒙层弹出层</view>
+<view class='theme-view'></view>
 <!-- <bya-overlay wx:if="{{showOverlay}}" bindclosed="closeOl"></bya-overlay> -->
-<bya-overlay show="{{showOl}}" bindoverlaytap="closeOl"></bya-overlay>
+<bya-overlay show="{{showOl}}" navChange="{{true}}" bindoverlaytap="closeOl"></bya-overlay>
 <view class='' bindtap="showTap">中间弹出层</view>
 <bya-dialog wx:if="{{showDialog}}" bindclosed="closeTap"></bya-dialog>
