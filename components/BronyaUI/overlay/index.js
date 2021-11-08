@@ -12,6 +12,7 @@
 
 //   }
 // import { debounce } from '../../utils/tool'
+// 蒙层组件，不带有自动关闭的特性
 const app = getApp()
 Component({
     behaviors: [],
@@ -65,11 +66,16 @@ Component({
     observers: {
         // 可以起到初始化和后续监听的功能
         'show'(n) {
-            console.log('observes', n)
             if (n) {
+                if (this.data.visible) {
+                    return
+                }
                 this.doShow()
             }
             else {
+                if (!this.data.visible) {
+                    return
+                }
                 this.doHide()
             }
         }
@@ -80,12 +86,6 @@ Component({
             console.log('权限组件构建 created')
         },
         attached() {
-            // if (this.data.show) {
-            //     this.doShow()
-            // }
-            // else {
-            //     this.doHide()
-            // }
         },
         moved() {
             // console.log('lifetimes moved')

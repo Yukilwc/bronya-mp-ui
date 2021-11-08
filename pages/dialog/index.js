@@ -16,7 +16,7 @@ Page({
   data: {
     showDialog: false,
     showOl: false,
-    showSkin1Dialog: true,
+    showSkin1Dialog: false,
   },
 
   /**
