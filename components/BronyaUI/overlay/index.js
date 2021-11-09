@@ -57,25 +57,28 @@ Component({
                     backgroundColor: '#806d9e',
                 }
             }
-        }
+        },
+        // 点击后是否自动关闭
+        overlay: {
+            type: Boolean,
+            value: false,
+        },
+
     },
     data: {
         render: false,
-        visible: false
+        visible: false,
+        isPending: false
     },
     observers: {
         // 可以起到初始化和后续监听的功能
         'show'(n) {
             if (n) {
-                if (this.data.visible) {
-                    return
-                }
+                if (this.data.visible) return
                 this.doShow()
             }
             else {
-                if (!this.data.visible) {
-                    return
-                }
+                if (!this.data.visible) return
                 this.doHide()
             }
         }
@@ -153,23 +156,32 @@ Component({
             }
         },
         doShow() {
+            this.setData({
+                isPending: true
+            })
             this.triggerEvent('show')
             this.changeNavColor(true)
             this.setData({
+                visible: true,
                 render: true,
-                visible: true
             })
         },
         doHide() {
+            this.setData({
+                isPending: true
+            })
             this.triggerEvent('close')
             this.changeNavColor(false)
             this.setData({
-                visible: false
+                visible: false,
             })
         },
         aniEnd() {
-            console.log('==========ani end', this.data.visible)
-            if (!this.data.visible) {
+            console.log('==========overlay ani end', this.data.show)
+            this.setData({
+                isPending: false
+            })
+            if (!this.data.show) {
                 this.setData({
                     render: false
                 })
@@ -178,7 +190,13 @@ Component({
         },
         overlayTap() {
             this.triggerEvent('overlaytap')
+            if (this.data.overlay) {
+                this.setData({
+                    show: false
+                })
+            }
         }
+
     }
 
 })

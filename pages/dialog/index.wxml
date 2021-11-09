@@ -2,7 +2,7 @@
     <view class='' bindtap="showOlTap">mask蒙层弹出层</view>
     <view class='theme-view'></view>
     <!-- <bya-overlay wx:if="{{showOverlay}}" bindclosed="closeOl"></bya-overlay> -->
-    <bya-overlay model:show="{{showOl}}" navChange="{{true}}" bindoverlaytap="closeOl"></bya-overlay>
+    <bya-overlay dur="{{350}}" model:show="{{showOl}}" navChange="{{true}}" overlay="{{true}}"></bya-overlay>
     <view class='' bindtap="showTap">中间弹出层no skin</view>
     <view class='' bindtap="showSkin1DialogTap">中间弹出层skin-1</view>
     <bya-dialog dur="{{350}}" show="{{showDialog}}">
