@@ -76,15 +76,17 @@ Component({
     data: {
         render: false,
         visible: false,
-        disabled: false
+        isPending: false,
     },
     observers: {
         'show'(n) {
             // console.log('observes', n, this.data.show)
             if (n) {
+                if (this.data.visible) return
                 this.doShow()
             }
             else {
+                if (!this.data.visible) return
                 this.doHide()
             }
         }
@@ -132,34 +134,43 @@ Component({
     },
     methods: {
         doShow() {
+            this.setData({
+                isPending: true
+            })
             this.triggerEvent('show')
             this.setData({
-                render: true,
                 visible: true,
-                disabled: false
-
+                render: true,
             })
         },
         doHide() {
+            this.setData({
+                isPending: true
+            })
             this.triggerEvent('close')
             this.setData({
                 visible: false,
-                disabled: true
             })
         },
         aniEnd() {
-            console.log('==========ani end', this.data.visible)
-            if (!this.data.visible) {
+            console.log('==========dialog ani end', this.data.show)
+            this.setData({
+                isPending: false
+            })
+            if (!this.data.show) {
                 this.setData({
-                    render: false,
-                    disabled: false
+                    render: false
                 })
                 this.triggerEvent('closed')
             }
         },
+
         overlayTap() {
             if (this.data.overlay) {
-                this.doHide()
+                this.setData({
+                    show: false
+                })
+
             }
         }
     }

@@ -1,7 +1,7 @@
 <view class="bya-layout-container bya-layout-container--{{skin}}" wx:if="{{render}}">
     <!-- 透明蒙层防止动画未结束时误触 -->
-    <view class='opacity-overlay' wx:if="{{disabled}}" style="z-index:{{zIndex+1}};"></view>
-    <bya-overlay show="{{visible}}" dur="{{dur}}" bindoverlaytap="overlayTap"></bya-overlay>
+    <view class='opacity-overlay' wx:if="{{isPending}}" style="z-index:{{zIndex+1}};"></view>
+    <bya-overlay show="{{visible}}" dur="{{dur}}" overlay="{{false}}" bindoverlaytap="overlayTap"></bya-overlay>
     <view style="top:calc(50% + {{yOffset}});z-index:{{zIndex}};animation-duration:{{dur}}ms;animation-timing-function:{{timing}}" bindanimationend="aniEnd" class="bya-dialog  {{visible?'show-ani':'hide-ani'}}">
         <view class='bya-dialog__wrapper'>
             <view class='bya-dialog__header'>
